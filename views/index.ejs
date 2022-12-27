@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://crypto.inx.co/_next/static/css/55cbafeccd163f82bdad.css">
+    <link rel="stylesheet" href="/fast.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="unused">
+        <div class="flex-container">
+            <div class="name-book">BTS-USDC </div>
+            <div class="info-box">
+                <span class="buy-order order-number">8</span>
+                <span class="sell-order order-number">8</span>
+            </div>
+            <div class="graf-container orderBookTable_chart__3geWV">
+                
+            </div>
+        </div>
+    </div>
+    <center><div id="container"></div></center>
+
+    <script src="/fast.js"></script>
+
+
+
+    <script>
+
+        setInterval(()=>{
+            $.get( "/price", function( data ) {
+                data = JSON.parse(data).data
+                
+
+                if($('[data-name="BTC-USD"]').find('.price')){
+                    let btcPrice = $('[data-name="BTC-USD"]').find('.price');
+                    let procentBtc = btcPrice.text().replace(',','') / Number(data[0].price) *100 -100
+                    if(procentBtc<0){procentBtc = procentBtc*-1}
+                    if(procentBtc>2){
+                        console.log(procentBtc);
+                        btcPrice.addClass('price-panic')
+                    }else{
+                        btcPrice.removeClass('price-panic')
+                    }
+                }
+
+                if($('[data-name="ETH-USD"]').find('.price')){
+                    let ethPrice = $('[data-name="ETH-USD"]').find('.price');
+                    let procentETH = ethPrice.text().replace(',','') / Number(data[1].price) *100 -100
+                    if(procentETH<0){procentETH = procentETH*-1}
+                    if(procentETH>2){
+                        console.log(procentETH);
+                        ethPrice.addClass('price-panic')
+                    }else{
+                        ethPrice.removeClass('price-panic')
+                    }
+                }
+
+
+
+                if($('[data-name="BTC-USDC"]').find('.price')){
+                    let btcPrice = $('[data-name="BTC-USDC"]').find('.price');
+                    let procentBtc = btcPrice.text().replace(',','') / Number(data[0].price) *100 -100
+                    if(procentBtc<0){procentBtc = procentBtc*-1}
+                    if(procentBtc>2){
+                        console.log(procentBtc);
+                        btcPrice.addClass('price-panic')
+                    }else{
+                        btcPrice.removeClass('price-panic')
+                    }
+                }
+
+                if($('[data-name="ETH-USDC"]').find('.price')){
+                    let ethPrice = $('[data-name="ETH-USDC"]').find('.price');
+                    let procentETH = ethPrice.text().replace(',','') / Number(data[1].price) *100 -100
+                    if(procentETH<0){procentETH = procentETH*-1}
+                    if(procentETH>2){
+                        console.log(procentETH);
+                        ethPrice.addClass('price-panic')
+                    }else{
+                        ethPrice.removeClass('price-panic')
+                    }
+                }
+                
+            })
+        },5000)
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
