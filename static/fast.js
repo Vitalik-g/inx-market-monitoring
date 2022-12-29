@@ -47,7 +47,7 @@ setInterval(()=>{
     });
 },1000)
 function checkWork(htmlElement,data){
-    if(data.buyBookSize <4 || data.sellBookSize < 4){
+    if(data.buyBookSize <3 || data.sellBookSize < 3){
         htmlElement.attr('data-fine', parseInt(htmlElement.attr('data-fine')) +1)
     }else{
         if(parseInt(htmlElement.attr('data-fine'))<0){
