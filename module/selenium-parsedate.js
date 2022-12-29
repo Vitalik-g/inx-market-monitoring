@@ -13,10 +13,16 @@ let links = ['https://one.inx.co/trading/BTC-USD',
 'https://one.inx.co/trading/ZUSD-GYEN',
 'https://one.inx.co/trading/ZUSD-USD',
 'https://one.inx.co/trading/BTC-ZUSD',
+'https://one.inx.co/trading/AVAXC-USD',
 'https://one.inx.co/trading/AVAXC-BTC',
+'https://one.inx.co/trading/SAND-BTC',
 'https://one.inx.co/trading/SAND-USD',
 'https://one.inx.co/trading/MATIC-USD',
+'https://one.inx.co/trading/MATIC-BTC',
 'https://one.inx.co/trading/MANA-USD',
+'https://one.inx.co/trading/MANA-BTC',
+'https://one.inx.co/trading/YFI-USD',
+'https://one.inx.co/trading/FTM-USD'
 ]
 
 
@@ -32,7 +38,10 @@ let createTabs = async ()=>{
     for(let i=1; i!=links.length;i++){
         await driver.switchTo().newWindow('tab');
         
+        
         driver.get(links[i])
+        // console.log( await driver.findElement(By.className('trading_content__top__z2jM4')))
+        
         
     }      
     startParse ()
@@ -51,6 +60,11 @@ function startParse (){
         // console.log( await driver.findElement(By.className('orderBookTable_chart__3geWV')).getAttribute('innerHTML'));
         let arryTabs = await driver.getAllWindowHandles()
         for(let i=0; i!= arryTabs.length; i++) {
+            if(global['removeCheck'] == undefined){
+                try{
+                    driver.executeScript("document.getElementsByClassName('trading_content__top__z2jM4')[0].remove()")
+                }catch{}
+            }
             await driver.switchTo().window(arryTabs[i]);
             let url = await driver.getCurrentUrl()
             
@@ -63,7 +77,8 @@ function startParse (){
                     graf:await driver.findElement(By.className('orderBookTable_chart__UpNt9')).getAttribute('innerHTML'),
                     buyBookSize: pidarArryCount(await orderBookArry[0].findElements(By.className('orderBookTable_tableRow__yCKbq'))),
                     sellBookSize:pidarArryCount(await orderBookArry[1].findElements(By.className('orderBookTable_tableRow__yCKbq'))),
-                    price: await driver.findElement(By.className('orderBook_header__value__NsTcZ')).getAttribute('innerHTML')
+                    price: await driver.findElement(By.className('orderBook_header__value__NsTcZ')).getAttribute('innerHTML'),
+                    url: url
                 }
             
                 localarryMarketData.push(jsonTemp)
@@ -72,6 +87,7 @@ function startParse (){
         global['arryMarketData'] = localarryMarketData
         // console.log(global['arryMarketData'])
         doneFlag = true;
+        global['removeCheck']='done'
         
     },500)    
 }

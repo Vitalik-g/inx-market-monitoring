@@ -5,12 +5,14 @@
     <link rel="stylesheet" href="/fast.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <div id="unused">
-        <div class="flex-container">
-            <div class="name-book">BTS-USDC </div>
+        <div class="flex-container" data-fine="0">
+            <a href="#" target="_blank" class="name-book">BTS-USDC </a>
             <div class="info-box">
                 <span class="buy-order order-number">8</span>
                 <span class="sell-order order-number">8</span>
@@ -38,7 +40,7 @@
                     let procentBtc = btcPrice.text().replace(',','') / Number(data[0].price) *100 -100
                     if(procentBtc<0){procentBtc = procentBtc*-1}
                     if(procentBtc>2){
-                        console.log(procentBtc);
+                        // console.log(procentBtc);
                         btcPrice.addClass('price-panic')
                     }else{
                         btcPrice.removeClass('price-panic')
@@ -50,7 +52,7 @@
                     let procentETH = ethPrice.text().replace(',','') / Number(data[1].price) *100 -100
                     if(procentETH<0){procentETH = procentETH*-1}
                     if(procentETH>2){
-                        console.log(procentETH);
+                        // console.log(procentETH);
                         ethPrice.addClass('price-panic')
                     }else{
                         ethPrice.removeClass('price-panic')
@@ -64,7 +66,7 @@
                     let procentBtc = btcPrice.text().replace(',','') / Number(data[0].price) *100 -100
                     if(procentBtc<0){procentBtc = procentBtc*-1}
                     if(procentBtc>2){
-                        console.log(procentBtc);
+                        // console.log(procentBtc);
                         btcPrice.addClass('price-panic')
                     }else{
                         btcPrice.removeClass('price-panic')
@@ -76,7 +78,7 @@
                     let procentETH = ethPrice.text().replace(',','') / Number(data[1].price) *100 -100
                     if(procentETH<0){procentETH = procentETH*-1}
                     if(procentETH>2){
-                        console.log(procentETH);
+                        // console.log(procentETH);
                         ethPrice.addClass('price-panic')
                     }else{
                         ethPrice.removeClass('price-panic')
