@@ -48,11 +48,11 @@ function checkStart(){
                         "url":"https://one.inx.co/trading/"+infoMarket[1].marketName
                      }
                     marketsarray.push(market)
-                    console.log(infoMarket[1].BUY[0]);
+                    //console.log(infoMarket[1].BUY[0]);
                 }
             }catch{
                 global["arryMarketData"] = marketsarray
-                console.log('erroe');
+                //console.log('erroe');
                 stop = true
                 ws.close()
             }
