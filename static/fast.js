@@ -49,7 +49,15 @@ setInterval(()=>{
 function checkWork(htmlElement,data){
     if(data.buyBookSize <3 || data.sellBookSize < 3){
         htmlElement.attr('data-fine', parseInt(htmlElement.attr('data-fine')) +1)
+        if(parseInt(htmlElement.attr('data-fine')) > 10){
+            htmlElement.addClass('bg-warning')
+            if(data.buyBookSize ==0 || data.sellBookSize ==0){
+                htmlElement.addClass('bg-problem')
+            }
+        }
     }else{
+        htmlElement.removeClass('bg-warning')
+        htmlElement.removeClass('bg-problem')
         if(parseInt(htmlElement.attr('data-fine'))<0){
             
         }else{

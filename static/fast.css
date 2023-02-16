@@ -15,7 +15,7 @@ body{
 .flex-container{
     display: inline-block;
     width: 200px;
-    height: 180px
+    height: 140px
 }
 .orderBookTable_chart__item__2rjBp{
     width: 100%;
@@ -36,8 +36,9 @@ body{
     justify-content: space-around;
     align-items: flex-end;
     font-size: 21px;
-    top:16px;
+    top:54px;
 }
+
 .sell-order{
     color: red;
 }
@@ -47,11 +48,17 @@ body{
 .price{
     color: blue;
 }
+.bg-warning{
+    background-color: rgba(255, 230, 0, 0.6);;
+}
+.bg-problem{
+    background-color: rgba(244, 0, 0, 0.6)!important;
+}
 .name-book{
     color: #ffed00;
     position: relative;
     /* left: 69px; */
-    top: 17px;
+    top: 50px;
     width: 200px;
     text-decoration: none;
     text-align: center;
